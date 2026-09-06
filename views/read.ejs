@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="min-h-screen bg-zinc-900"> <!-- Added bg -->
+     <div class="h-full w-full p-10 text-white"> <!-- Removed bg from here -->
+        <a href="/" class="text-blue-500 ">Back to Home</a>
+        <h1 class="text-3xl mt-10 tracking-tighter mb-3">All Users</h1>
+        <div class="users flex gap-3 flex-wrap">
+             <% users.forEach(function(user) { %>
+            <div class="user w-72 p-4 bg-zinc-800 rounded-lg border border-zinc-700" overflow="hidden"> <!-- Changed bg -->  
+                <img class="w-full h-52 object-cover rounded-lg" src="<%= user.image %>" alt="">
+                <h3 class="text-2xl mt-4 tracking-tighter text-white"><%= user.name %></h3>
+                <h5 class="text-gray-400"><%= user.email %></h5>
+                <div class="flex gap-3 mt-10"> <!-- mt-10 works now -->
+                    <a class="text-blue-400 hover:text-blue-300" href="/edit/<%= user._id %>">Edit user</a> <!-- Better color -->
+                    <a class="text-red-400 hover:text-red-300" class="" href="/delete/<%= user._id %>">Delete user</a> <!-- Better color -->
+                </div>
+            </div>
+         <% })  %>
+        </div>
+     </div>
+</body>
+</html>
